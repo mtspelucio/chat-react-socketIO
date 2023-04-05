@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Container } from './styles';
 
 import Menssage from '../Menssage';
+import Users from '../Users';
 
 export default function Chat({ socket }) {
 
@@ -9,15 +10,22 @@ export default function Chat({ socket }) {
   const bottomRef = useRef();
   const [messageList, setMessageList] = useState([]);
   const [previousMessage, setPreviousMessage] = useState([]);
+  const [connectUsers, setConnectUsers] = useState([]);
 
   useEffect(() => {
     socket.on('receive_message', data => {
       setMessageList(current => [...current, data])
+      // console.log(socket)
     })
 
     socket.on('previous_message', messages => {
       setPreviousMessage(messages)
     })
+
+    socket.on('connect_users', users => {
+      setConnectUsers(users)
+    })
+    console.log(socket)
 
     return () => socket.off('receive_message')
   }, [socket])
@@ -53,24 +61,34 @@ export default function Chat({ socket }) {
     
   return (
     <Container>
-      <h1>BATE-PAPO</h1>
-      <div className='chat'>
+      <div className='users'>
+        <Users key={12} user={"teste1"} />
         {
-          previousMessage.map((message, index) => (
-            <Menssage index={index} message={message} />
+          connectUsers.map((user, index) => (
+            <Users key={index} user={user} />
           ))
         }
-        {
-          messageList.map((message, index) => (
-            <Menssage index={index} message={message} />
-          ))
-        }
-        <div ref={bottomRef} />
       </div>
-      <div className='sendMessage'>
-        <input type='text' ref={messageRef} onKeyDown={e => getEnterKey(e)} placeholder='Digite sua mensagem...'/>
-        <button onClick={handleSubmit} >Enviar</button>
+      <div className='chatContainer'>
+        <div className='chat'>
+          {
+            previousMessage.map((message, index) => (
+              <Menssage key={index} message={message} />
+            ))
+          }
+          {
+            messageList.map((message, index) => (
+              <Menssage key={index} message={message} />
+            ))
+          }
+          <div ref={bottomRef} />
+        </div>
+        <div className='sendMessage'>
+          <input type='text' ref={messageRef} onKeyDown={e => getEnterKey(e)} placeholder='Digite sua mensagem...'/>
+          <button onClick={handleSubmit} >Enviar</button>
+        </div>
       </div>
+      
     </Container>
   );
 }

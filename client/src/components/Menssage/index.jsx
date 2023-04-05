@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container } from './styles';
 
-export default function Menssage({index, message}) {
+export default function Menssage({ message }) {
   return (
-    <Container key={index}>
+    <Container>
       <strong>{ message.author }</strong>
       <p id={message.authorId} >{ message.text }</p>
     </Container>

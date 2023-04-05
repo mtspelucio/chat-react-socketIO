@@ -5,6 +5,7 @@ const io = require('socket.io')(server, { cors: {origin: 'http://localhost:5173'
 const PORT = 3001
 
 let messages = [];
+let users = [];
 
 io.on('connection', socket => {
     console.log("user connect", socket.id)
@@ -15,9 +16,11 @@ io.on('connection', socket => {
 
     socket.on('set_username', userName => {
         socket.data.userName = userName
+        users.push(userName)
     })
 
     socket.emit('previous_message', messages)
+    socket.emit('connect_users', users)
 
     socket.on('message', text => {
         let data = {

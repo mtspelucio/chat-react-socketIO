@@ -1,32 +1,59 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    background-image: linear-gradient(to top, var(--secondary-color), var(--primary-color));
-    padding: 0 1rem 1rem 1rem;
     width: 80%;
     height: 80vh;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 20rem 1fr; 
+    grid-gap: 1rem;
 
-    h1{
-        margin-bottom: 2rem;
-        font-size: 18pt;
+    
+    
+    .chatContainer,
+    .users{
+        background-image: linear-gradient(to top, var(--secondary-color), var(--primary-color));
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        overflow-y: scroll;
+    }
+    .users{
+        background-image: linear-gradient(to top, var(--secondary-color), var(--secondary-color));
+        
     }
 
     .chat{
-        /* background-color: red; */
-        width: 90%;
-        height: 90vh;
+        flex: 1;
+        width: 100%;
         padding: 1rem;
-        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    .users, 
+    .chat{
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            margin: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--clear);
+            border-radius: 20px;
+        }
+    }
+    .chatContainer{
+        ::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     .sendMessage{
         width: 100%;
-        padding: 1rem;
+        padding: 1rem 3rem;
         display: flex;
         justify-content: space-between;
 
@@ -45,10 +72,17 @@ export const Container = styled.div`
                 color: var(--white); 
                 opacity: .2;
             }
+
+            :focus{
+                /* border: 2px solid var(--clear); */
+                box-shadow: .2rem .2rem .5rem var(--primary-color), 
+             -.2rem -.2rem .5rem var(--clear);                
+            }
         }
         
         button{
             max-height: 2.5rem;
+            width: 8rem;
             padding: 1rem;
             display: flex;
             align-items: center;
@@ -59,7 +93,17 @@ export const Container = styled.div`
             background-color: var(--secondary-color);
             box-shadow: .2rem .2rem .5rem var(--primary-color), 
              -.2rem -.2rem .5rem var(--clear);
-             color: var(--white);
+            color: var(--white);
+            font-weight: bold;
+            cursor: pointer;
+            transition: .5s;
+
+            :hover{
+                box-shadow: 0 0 1rem var(--clear);
+                scale: 1.1;
+            }
+            
         }
     }
+    
 `;

@@ -9,17 +9,24 @@ export default function Join({ setSocket, setChatVisibility }) {
 
     const handleSubmit = async () => {
         const userName = userNameRef.current.value
-        if(!userName.trim()) return
+        if(!userName.trim()) {
+            alert("Digite um nome")
+            return
+        } 
         const socket = await io.connect('http://localhost:3001');
         socket.emit('set_username', userName)
         setSocket(socket)
         setChatVisibility(true)
     }
 
+    const getEnterKey = (e) => {
+        if(e.key === 'Enter') handleSubmit();
+    }
+
     return (
         <Container>
             <h1>CONECT</h1>
-            <input type='text' ref={ userNameRef } placeholder='Nome'/>
+            <input type='text' ref={ userNameRef } onKeyDown={e => getEnterKey(e)} placeholder='Nome'/>
             <button onClick={ handleSubmit }>ENTRAR</button>
         </Container>
     );

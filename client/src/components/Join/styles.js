@@ -39,16 +39,15 @@ export const Container = styled.div`
         border: none;
         border-radius: 10px;
         margin-top: 1rem;
-        background-color: var(--primary-color);
+        background-color: var(--secondary-color);
         color: var(--white);
-        box-shadow: 0 2px 5px var(--clear), 
-            inset 0 2px 5px var(--dark);
+        box-shadow: .2rem .2rem .5rem var(--primary-color), 
+            -.2rem -.2rem .5rem var(--clear);
         transition: ease all .5s;
         cursor: pointer;
     }
     button:hover{
-        background-color: var(--secondary-color);
-        inset .2rem .2rem .5rem var(--primary-color), 
-        inset -.2rem -.2rem .5rem var(--clear);
+        box-shadow: none;
+        background-color: var(--clear);
     }
 `;
