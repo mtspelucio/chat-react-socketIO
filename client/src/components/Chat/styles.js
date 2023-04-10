@@ -27,6 +27,7 @@ export const Container = styled.div`
 
     .chat{
         flex: 1;
+        flex-direction: column;
         width: 100%;
         padding: 1rem;
         overflow-y: scroll;
@@ -63,7 +64,7 @@ export const Container = styled.div`
       
             border: none;
             border-radius: 10rem;
-            padding-left: 1rem;
+            padding: 0 3.5rem 0 1rem;
             color: var(--white);
 
             ::placeholder{

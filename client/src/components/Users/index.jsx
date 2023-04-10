@@ -6,7 +6,7 @@ export default function Users({ user }) {
   return (
     <Container>
         <img src={User} alt='Usuário' />
-        <p>{ user }</p>
+        <p>{ user.name }</p>
     </Container>
   );
 }

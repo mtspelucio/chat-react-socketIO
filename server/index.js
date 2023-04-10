@@ -11,12 +11,19 @@ io.on('connection', socket => {
     console.log("user connect", socket.id)
 
     socket.on('disconnect', reason => {
-        console.log('Usuério desconectado', socket.id)
+        console.log('Usuário desconectado', socket.id)
+        users = users.filter(user => user.id == socket.id)
     })
 
     socket.on('set_username', userName => {
         socket.data.userName = userName
-        users.push(userName)
+
+        let user = {
+            name: userName,
+            id: socket.id
+        }
+        users.push(user)
+        console.log(users)
     })
 
     socket.emit('previous_message', messages)

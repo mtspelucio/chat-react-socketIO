@@ -17,7 +17,6 @@ export default function Chat({ socket }) {
   useEffect(() => {
     socket.on('receive_message', data => {
       setMessageList(current => [...current, data])
-      // console.log(socket)
     })
 
     socket.on('previous_message', messages => {
@@ -27,7 +26,7 @@ export default function Chat({ socket }) {
     socket.on('connect_users', users => {
       setConnectUsers(users)
     })
-    console.log(socket)
+    console.log(connectUsers)
 
     return () => socket.off('receive_message')
   }, [socket])
@@ -64,7 +63,6 @@ export default function Chat({ socket }) {
   return (
     <Container>
       <div className='users'>
-        <Users key={12} user={"teste1"} />
         {
           connectUsers.map((user, index) => (
             <Users key={index} user={user} />
@@ -75,12 +73,12 @@ export default function Chat({ socket }) {
         <div className='chat'>
           {
             previousMessage.map((message, index) => (
-              <Menssage key={index} message={message} />
+              <Menssage key={index} message={message} socket={socket} />
             ))
           }
           {
             messageList.map((message, index) => (
-              <Menssage key={index} message={message} />
+              <Menssage key={index} message={message} socket={socket} />
             ))
           }
           <div ref={bottomRef} />
