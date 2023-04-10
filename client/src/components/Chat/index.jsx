@@ -4,6 +4,8 @@ import { Container } from './styles';
 import Menssage from '../Menssage';
 import Users from '../Users';
 
+import Send from '../../assets/send.png'
+
 export default function Chat({ socket }) {
 
   const messageRef = useRef();
@@ -85,7 +87,7 @@ export default function Chat({ socket }) {
         </div>
         <div className='sendMessage'>
           <input type='text' ref={messageRef} onKeyDown={e => getEnterKey(e)} placeholder='Digite sua mensagem...'/>
-          <button onClick={handleSubmit} >Enviar</button>
+          <button onClick={handleSubmit} ><img src={Send} alt='icone de enviar' /></button>
         </div>
       </div>
       

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     //background-image: linear-gradient(to right, blue, red);
-    background-image: linear-gradient(to top, var(--secondary-color), var(--primary-color));
+    background-image: linear-gradient(to top, var(--secondary-color), #000);
     padding: 5rem;
     border-radius: 10px;
     display: flex;

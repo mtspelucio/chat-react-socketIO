@@ -12,7 +12,7 @@ export const Container = styled.div`
     
     .chatContainer,
     .users{
-        background-image: linear-gradient(to top, var(--secondary-color), var(--primary-color));
+        background: var(--gray-1);
         border-radius: 10px;
         display: flex;
         flex-direction: column;
@@ -21,7 +21,7 @@ export const Container = styled.div`
         overflow-y: scroll;
     }
     .users{
-        background-image: linear-gradient(to top, var(--secondary-color), var(--secondary-color));
+        background: var(--gray-1);
         
     }
 
@@ -41,7 +41,7 @@ export const Container = styled.div`
             margin: 5px;
         }
         ::-webkit-scrollbar-thumb {
-            background-color: var(--clear);
+            background-color: var(--primary-color);
             border-radius: 20px;
         }
     }
@@ -55,14 +55,12 @@ export const Container = styled.div`
         width: 100%;
         padding: 1rem 3rem;
         display: flex;
-        justify-content: space-between;
 
         input{
-            background-color: var(--secondary-color);
+            background-color: var(--gray-2);
             height: 2.5rem;
             width: 90%;
-            box-shadow: inset .2rem .2rem .5rem var(--primary-color), 
-                inset -.2rem -.2rem .5rem var(--clear);
+      
             border: none;
             border-radius: 10rem;
             padding-left: 1rem;
@@ -70,36 +68,26 @@ export const Container = styled.div`
 
             ::placeholder{
                 color: var(--white); 
-                opacity: .2;
-            }
-
-            :focus{
-                /* border: 2px solid var(--clear); */
-                box-shadow: .2rem .2rem .5rem var(--primary-color), 
-             -.2rem -.2rem .5rem var(--clear);                
+                opacity: .5;
             }
         }
         
         button{
-            max-height: 2.5rem;
-            width: 8rem;
-            padding: 1rem;
+            background: none;
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: none;
-            border-radius: 1rem;
-            margin-left: 1rem;
-            background-color: var(--secondary-color);
-            box-shadow: .2rem .2rem .5rem var(--primary-color), 
-             -.2rem -.2rem .5rem var(--clear);
-            color: var(--white);
-            font-weight: bold;
+            position: relative;
+            right: 2.5rem;
             cursor: pointer;
             transition: .5s;
 
+            img{
+                width: 1.5rem;
+            }
+
             :hover{
-                box-shadow: 0 0 1rem var(--clear);
                 scale: 1.1;
             }
             

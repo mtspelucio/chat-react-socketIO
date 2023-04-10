@@ -6,6 +6,8 @@ export default createGlobalStyle`
         font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
         --primary-color: #000020;
         --secondary-color: #171a4a;
+        --gray-1: #0f0f0f;
+        --gray-2: #1f1f1f;
         --clear: #2f2c79;
         --white: #fff;
         --dark: #000;
@@ -18,7 +20,7 @@ export default createGlobalStyle`
         box-sizing: border-box
     }
     body{
-        background-color: var(--primary-color);
+        background-color: #000;
         color: var(--white);
     }
     .App{
