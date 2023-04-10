@@ -26,7 +26,7 @@ export default function Chat({ socket }) {
     socket.on('connect_users', users => {
       setConnectUsers(users)
     })
-    console.log(connectUsers)
+    
 
     return () => socket.off('receive_message')
   }, [socket])
@@ -65,8 +65,9 @@ export default function Chat({ socket }) {
       <div className='users'>
         {
           connectUsers.map((user, index) => (
-            <Users key={index} user={user} />
+            <Users key={index} user={user} socket={socket} />
           ))
+          // console.log(connectUsers)
         }
       </div>
       <div className='chatContainer'>

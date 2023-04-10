@@ -4,7 +4,6 @@ import { Container } from './styles';
 export default function Menssage({ message, socket }) {
   let author
   message.authorId == socket.id ? author = true : author = false
-  console.log(author);
 
   return (
     <Container author={author}>

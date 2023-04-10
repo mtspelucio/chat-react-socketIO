@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    background: var(--gray-2);
+    background: ${({author}) => author == true ? 'var(--blue)' : 'var(--gray-2)'};
     border-radius: 10px;
     display: flex;
     align-items: center;

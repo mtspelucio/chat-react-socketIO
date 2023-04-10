@@ -7,15 +7,18 @@ const PORT = 3001
 let messages = [];
 let users = [];
 
-io.on('connection', socket => {
+io.on('connection', async socket => {
     console.log("user connect", socket.id)
 
     socket.on('disconnect', reason => {
         console.log('Usuário desconectado', socket.id)
-        users = users.filter(user => user.id == socket.id)
+        users = users.filter(user => user.id != socket.id)
+        console.log(users)
+
+        io.emit('connect_users', users)
     })
 
-    socket.on('set_username', userName => {
+    await socket.on('set_username', userName => {
         socket.data.userName = userName
 
         let user = {
@@ -24,10 +27,11 @@ io.on('connection', socket => {
         }
         users.push(user)
         console.log(users)
+        io.emit('connect_users', users)
     })
 
     socket.emit('previous_message', messages)
-    socket.emit('connect_users', users)
+    
 
     socket.on('message', text => {
         let data = {
