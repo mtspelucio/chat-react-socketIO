@@ -8,7 +8,11 @@ export const Container = styled.div`
     grid-template-columns: 20rem 1fr; 
     grid-gap: 1rem;
 
-    
+    @media (min-width: 1400px){
+        .chatContainer::before{
+        width: 10rem;
+    }
+    }
     
     .chatContainer,
     .users{
@@ -23,6 +27,16 @@ export const Container = styled.div`
     .users{
         background: var(--gray-1);
         
+    }
+
+    .chatContainer::before{
+        content: '';
+        display: block;
+        position: fixed;
+        width: 60%;
+        height: 8rem;
+        background: linear-gradient(to bottom, var(--gray-1) 20%, transparent 90%);
+        z-index: 999;
     }
 
     .chat{
@@ -42,7 +56,7 @@ export const Container = styled.div`
             margin: 5px;
         }
         ::-webkit-scrollbar-thumb {
-            background-color: var(--primary-color);
+            background-color: var(--clear);
             border-radius: 20px;
         }
     }
@@ -54,7 +68,7 @@ export const Container = styled.div`
 
     .sendMessage{
         width: 100%;
-        padding: 1rem 3rem;
+        padding-left: 4rem ;
         display: flex;
 
         input{
