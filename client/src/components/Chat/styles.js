@@ -8,11 +8,7 @@ export const Container = styled.div`
     grid-template-columns: 20rem 1fr; 
     grid-gap: 1rem;
 
-    @media (min-width: 1400px){
-        .chatContainer::before{
-        width: 10rem;
-    }
-    }
+    
     
     .chatContainer,
     .users{
@@ -26,15 +22,21 @@ export const Container = styled.div`
     }
     .users{
         background: var(--gray-1);
-        
+        gap: 1rem;
+    }
+
+
+    .chatContainer{
+        position: relative;
     }
 
     .chatContainer::before{
         content: '';
         display: block;
-        position: fixed;
-        width: 60%;
-        height: 8rem;
+        position: absolute;
+        top: 1.8rem;
+        width: 100%;
+        height: 5rem;
         background: linear-gradient(to bottom, var(--gray-1) 20%, transparent 90%);
         z-index: 999;
     }
@@ -68,13 +70,16 @@ export const Container = styled.div`
 
     .sendMessage{
         width: 100%;
-        padding-left: 4rem ;
+        padding: 1rem ;
         display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
 
         input{
             background-color: var(--gray-2);
             height: 2.5rem;
-            width: 90%;
+            width: 100%;
       
             border: none;
             border-radius: 10rem;
@@ -93,8 +98,8 @@ export const Container = styled.div`
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            right: 2.5rem;
+            position: absolute;
+            right: 2rem;
             cursor: pointer;
             transition: .5s;
 
@@ -108,5 +113,26 @@ export const Container = styled.div`
             
         }
     }
-    
+
+    @media (max-width: 1024px){
+        grid-template-columns: 12rem 1fr;
+    }
+    @media (max-width: 425px){
+        display: flex;
+        flex-direction: column;
+
+        .chatContainer,
+        .users{
+            padding: 1rem;
+        }
+
+        .users{
+
+            height: 15rem;
+        }
+
+        .chatContainer::before{
+            top: 1rem;
+        }
+    }
 `;

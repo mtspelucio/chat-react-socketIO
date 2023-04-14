@@ -4,7 +4,8 @@ export const Container = styled.div`
     //background-image: linear-gradient(to right, blue, red);
     background-image: linear-gradient(to top, var(--secondary-color), #000);
     padding: 5rem;
-    border-radius: 10px;
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,4 +51,5 @@ export const Container = styled.div`
         box-shadow: none;
         background-color: var(--clear);
     }
+
 `;
